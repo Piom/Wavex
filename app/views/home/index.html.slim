@@ -1,0 +1,30 @@
+=javascript_include_tag "http://api-maps.yandex.ru/1.1/index.xml?key=AD-yKk8BAAAAluaIZgIAxUWYZMnDF_9WJpI030UgIqAieGEAAAAAAAAAAABd4qVFRTFLHBYgojrCDZISrioPLA=="
+- content_for :hero_unit do
+  div class="hero-unit"
+    div id="YMap"
+div class="row"
+  h3 Последние метки
+  ul class="unstyled"
+  - Markers.for_front_page.each do |point|
+    li
+      a href="##{point.id}" class="map-marker" =point.name
+
+  a class="btn" data-toggle="add_marker"
+    i class="icon-map-marker"
+    |Добавить
+
+div.modal.add-marker.hide
+  div class="modal-header"
+    a class="close" data-dismiss="modal" ×
+    h3 Add Marker
+  div class="modal-body"
+    form id="add-marker"
+      label for="name" Имя метки
+      input name="name" type="text"
+      label for="longitude" Longitude
+      input name="longitude" type="text"
+      label for="latitude" Latitude
+      input name="latitude" type="text"
+  div class="modal-footer"
+    a data-action="close" href="#" class="btn" Close
+    a data-action="save-marker" href="#" class="btn btn-primary" Save changes
